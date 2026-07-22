@@ -1,0 +1,4 @@
+allowBuilds:
+  esbuild: false
+minimumReleaseAgeExclude:
+  - '@vignet/vignet@1.0.2-alpha'
