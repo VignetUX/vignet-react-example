@@ -15,7 +15,6 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    include: ['src/**/*.test.{ts,tsx}'],
     setupFiles: ['./test/setup.ts'],
     projects: [
       {
@@ -23,12 +22,15 @@ export default defineConfig({
         test: {
           name: 'jsdom',
           environment: 'jsdom',
+          include: ['src/**/*.test.{ts,tsx}'],
+          exclude: ['src/**/*.browser.test.{ts,tsx}'],
         },
       },
       {
         extends: true,
         test: {
           name: 'browser-workspace',
+          include: ['src/**/*.browser.test.{ts,tsx}'],
           browser: {
             provider: playwright(),
             enabled: true,

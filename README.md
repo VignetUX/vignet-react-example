@@ -8,3 +8,8 @@ Run using steps below:
 2. `pnpm vignet`
 
 Your browser will then open with Vignet loaded!
+
+For comparison, you can also run tests in jsdom and Vitest Browser modes:
+
+- jsdom: `pnpm test:jsdom`
+- browser mode: `pnpm test:browser`
