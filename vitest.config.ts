@@ -14,17 +14,30 @@ export default defineConfig({
     },
   },
   test: {
-    environment: 'jsdom',
-    browser: {
-      provider: playwright(),
-      enabled: true,
-      // at least one instance is required
-      instances: [
-        { browser: 'chromium' },
-      ],
-    },
     globals: true,
     include: ['src/**/*.test.{ts,tsx}'],
     setupFiles: ['./test/setup.ts'],
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: 'jsdom',
+          environment: 'jsdom',
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: 'browser-workspace',
+          browser: {
+            provider: playwright(),
+            enabled: true,
+            instances: [
+              { browser: 'chromium', name: 'browser' },
+            ],
+          },
+        },
+      },
+    ],
   },
 })
